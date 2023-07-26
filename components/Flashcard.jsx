@@ -19,8 +19,8 @@ export const source_code_pro = Source_Code_Pro({
     weight: '500',
 });
 
-const Flashcard = async ({ coctail }) => {
-    const display = await coctail[0];
+const Flashcard = async ({ cocktail }) => {
+    const display = await cocktail[0];
     console.log(display);
 
     const strDrink = display?.strDrink;
@@ -45,7 +45,7 @@ const Flashcard = async ({ coctail }) => {
                 <div className="flip-card-inner">
                     <div className="flip-card-front flex justify-center items-center">
                         <div className="profile-image my-auto">
-                            <img src={strDrinkThumb} alt="coctail Pic" width={200} height={150} className="rounded-3xl mx-auto" />
+                            <img src={strDrinkThumb} alt="cocktail Pic" width={200} height={150} className="rounded-3xl mx-auto" />
 
                             <div className={`my-5 text-neutral-50 text-4xl underline font-bold ${source_code_pro.className}`}>
                                 {strDrink}
@@ -53,8 +53,11 @@ const Flashcard = async ({ coctail }) => {
 
                         </div>
                     </div>
-                    <div className="flex justify-center items-center flip-card-back">
+                    <div className="flex justify-center m-3 flip-card-back">
                         <div className="">
+                            <div className={`my-8 text-blue-500 text-4xl underline font-extrabold ${source_code_pro.className}`}>
+                                {strDrink}
+                            </div>
                             <div className="text-2xl text-neutral-50 font-bold mb-5 underline">
                                 Ingrediants Used
                             </div>
@@ -69,9 +72,11 @@ const Flashcard = async ({ coctail }) => {
                             }
                             )}
                             <div className="text-lg text-neutral-50">
-                              <span className="text-lg underline italic mr-3">Instructions:</span> 
+                                <div className="text-lg underline italic mr-3">Instructions:</div>
                                 {strInstructions}
                             </div>
+
+
 
                         </div>
                     </div>
