@@ -11,7 +11,7 @@ export default function Home() {
         What would you like to do?
         <div className="flex flex-row items-center justify-center">
           <a href="/browse" className="text-neutral-50 m-4 p-4 border-2 border-black rounded-lg hover:bg-neutral-200 hover:text-black hover:font-bold">Browse flashcards</a>
-          <a href="/random" className="text-neutral-50 m-4 p-4 border-2 border-black rounded-lg hover:bg-neutral-200 hover:text-black hover:font-bold">Study flashcards</a>
+          <a href="/random" className="text-neutral-50 m-4 p-4 border-2 border-black rounded-lg hover:bg-neutral-200 hover:text-black hover:font-bold">Random flashcards</a>
           <a href="/search" className="text-neutral-50 m-4 p-4 border-2 border-black rounded-lg hover:bg-neutral-200 hover:text-black hover:font-bold">Search flashcards</a>
         </div>
       </div>
