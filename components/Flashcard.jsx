@@ -20,7 +20,7 @@ export const source_code_pro = Source_Code_Pro({
 });
 
 const Flashcard = async ({ cocktail }) => {
-    const display = await cocktail[0];
+    const display = await cocktail;
     console.log(display);
 
     const strDrink = display?.strDrink;
