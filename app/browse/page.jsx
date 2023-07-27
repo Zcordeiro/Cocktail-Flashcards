@@ -61,7 +61,7 @@ const browsePage = () => {
                 </ul>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-8 place-items-center">
+            <div className="grid grid-cols-1  gap-2 mt-8 place-items-center">
                 {filteredCocktails.map((cocktail) => (
                     <Flashcard key={cocktail.idDrink} cocktail={cocktail} />
                 ))}
