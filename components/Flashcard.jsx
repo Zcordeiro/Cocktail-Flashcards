@@ -19,9 +19,8 @@ export const source_code_pro = Source_Code_Pro({
     weight: '500',
 });
 
-const Flashcard = async ({ cocktail }) => {
-    const display = await cocktail;
-    console.log(display);
+const Flashcard = ({ cocktail }) => {
+    const display =  cocktail;
 
     const strDrink = display?.strDrink;
     const strDrinkThumb = display?.strDrinkThumb;

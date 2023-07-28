@@ -13,7 +13,6 @@ const browsePage = () => {
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
       );
       const data = await res.json();
-      console.log(data);
       setCocktails(data.drinks);
       setFilteredCocktails(data.drinks);
     };
@@ -27,7 +26,6 @@ const browsePage = () => {
         `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
       );
       const data = await res.json();
-      console.log(data);
       const filteredData = data.drinks.filter((cocktail) =>
         cocktail.strDrink.toLowerCase().startsWith(letter.toLowerCase())
       );
@@ -61,13 +59,11 @@ const browsePage = () => {
                 </ul>
             </div>
 
-            <div className="grid grid-cols-1  gap-2 mt-8 place-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-2 mt-8 place-items-center">
                 {filteredCocktails.map((cocktail) => (
                     <Flashcard key={cocktail.idDrink} cocktail={cocktail} />
                 ))}
             </div>
-
-
 
 
             <a className="fixed top-52 right-0 bg-green-800 p-5 rounded hover:bg-green-900/40 hover:text-slate-50 hover:font-bold hover:cursor-pointer" href="/">Go Back</a>
