@@ -73,7 +73,7 @@ const browsePage = () => {
                         return (
                             <li
                                 key={letter}
-                                className="btn btn-lg btn-accent m-2"
+                                className="btn btn-outline m-2"
                                 onClick={() => fetchCocktailByLetter(letter)}
                             >
                                 {letter.toUpperCase()}

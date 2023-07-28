@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Roboto_Mono, Lato, Source_Code_Pro } from "next/font/google";
 
 export const roboto_mono = Roboto_Mono({
@@ -35,61 +38,53 @@ const Flashcard = ({ cocktail }) => {
     { ingredient: display?.strIngredient8, measure: display?.strMeasure8 },
   ];
 
+  const [showIngredients, setShowIngredients] = useState(false);
+
   return (
     <>
-      {/* <div className="flip-card my-7">
-                <div className="flip-card-inner">
-                    <div className="flip-card-front flex justify-center items-center">
-                        <div className="profile-image my-auto">
-                            <img src={strDrinkThumb} alt="cocktail Pic" width={200} height={150} className="rounded-3xl mx-auto" />
 
-                            <div className={`my-5 text-neutral-950 text-4xl underline font-bold ${source_code_pro.className}`}>
-                                {strDrink}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div className="flex flex-wrap justify-center m-3 flip-card-back">
-                        <div className="">
-                            <div className={`my-8 text-blue-500 text-4xl underline font-extrabold ${source_code_pro.className}`}>
-                                {strDrink}
-                            </div>
-                            <div className="text-xl text-neutral-950 font-bold mb-5 underline">
-                                Ingrediants Used
-                            </div>
-                            {ingredientsWithMeasures.map((ingrediant, index) => {
-                                if (ingrediant.ingredient) {
-                                    return (
-                                        <div key={index} className="text-base text-neutral-950 mb-3">
-                                            {ingrediant.ingredient} - {ingrediant.measure}
-                                        </div>
-                                    )
-                                }
-                            }
-                            )}
-                            <div className="text-sm text-neutral-950">
-                                <div className="text-lg underline italic mr-3">Instructions:</div>
-                                {strInstructions}
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div> */}
       <div className="card w-96 bg-base-100 shadow-xl mt-5">
         <figure>
-          <img
-            src={strDrinkThumb}
-            alt="Cocktail Pic"
-          />
+          <img src={strDrinkThumb} alt="Cocktail Pic" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{strDrink}</h2>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+            <label>Hide</label>
+            <input
+              type="checkbox"
+              className="toggle toggle-success"
+              checked={showIngredients}
+              onChange={(e) => setShowIngredients(e.target.checked)}
+            />
+            <label>See More</label>
           </div>
+
+          {showIngredients && (
+            <>
+              <div className="text-xl text-neutral-950 font-bold mb-5 underline">
+                Ingrediants Used
+              </div>
+              {ingredientsWithMeasures.map((ingrediant, index) => {
+                if (ingrediant.ingredient) {
+                  return (
+                    <div
+                      key={index}
+                      className="text-base text-neutral-950 mb-3"
+                    >
+                      {ingrediant.ingredient} - {ingrediant.measure}
+                    </div>
+                  );
+                }
+              })}
+              <div className="text-sm text-neutral-950">
+            <div className="text-lg underline italic mr-3">Instructions:</div>
+            {strInstructions}
+          </div>
+            </>
+          )}
+
+          
         </div>
       </div>
     </>
