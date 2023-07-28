@@ -9,7 +9,6 @@ const randomPage = () => {
     const fetchCocktails = async () => {
         const res = await fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php");
         const data = await res.json();
-        console.log(data);
         setCocktails(data.drinks[0]);
     };
 
