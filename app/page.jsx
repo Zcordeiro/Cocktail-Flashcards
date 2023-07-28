@@ -1,13 +1,17 @@
-
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center pt-10 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gray-900 to-gray-400 w-full">
-      <h1 className="text-6xl font-bold py-6">Welcome to my Cocktail Flashcards</h1>
-
-      <p className="text-xl text-center font-bold py-6">This is a flashcard app for learning cocktail recipes. I made it to help myself better memorize drinks.</p>
-
-      <span className="italic text-lg mt-8 font-extrabold">If you have any questions please feel free to contact me</span> <a className="text-blue-500 font-extrabold text-lg" href="https://www.zeuscordeiro.com/about" target="_blank">HERE</a>
-    </main>
-  )
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">Hello there</h1>
+          <p className="py-6">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
+          </p>
+          <button className="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </div>
+  );
 }

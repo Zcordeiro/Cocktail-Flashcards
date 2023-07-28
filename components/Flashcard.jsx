@@ -1,46 +1,43 @@
-
 import { Roboto_Mono, Lato, Source_Code_Pro } from "next/font/google";
 
-
 export const roboto_mono = Roboto_Mono({
-    subsets: ["latin-ext"],
-    display: "swap",
-    style: "italic",
+  subsets: ["latin-ext"],
+  display: "swap",
+  style: "italic",
 });
 
 export const lato = Lato({
-    subsets: ["latin-ext"],
-    display: "swap",
-    weight: "400",
+  subsets: ["latin-ext"],
+  display: "swap",
+  weight: "400",
 });
 
 export const source_code_pro = Source_Code_Pro({
-    subsets: ['latin-ext'],
-    weight: '500',
+  subsets: ["latin-ext"],
+  weight: "500",
 });
 
 const Flashcard = ({ cocktail }) => {
-    const display =  cocktail;
+  const display = cocktail;
 
-    const strDrink = display?.strDrink;
-    const strDrinkThumb = display?.strDrinkThumb;
-    const strInstructions = display?.strInstructions;
+  const strDrink = display?.strDrink;
+  const strDrinkThumb = display?.strDrinkThumb;
+  const strInstructions = display?.strInstructions;
 
-    const ingredientsWithMeasures = [
-        { ingredient: display?.strIngredient1, measure: display?.strMeasure1 },
-        { ingredient: display?.strIngredient2, measure: display?.strMeasure2 },
-        { ingredient: display?.strIngredient3, measure: display?.strMeasure3 },
-        { ingredient: display?.strIngredient4, measure: display?.strMeasure4 },
-        { ingredient: display?.strIngredient5, measure: display?.strMeasure5 },
-        { ingredient: display?.strIngredient6, measure: display?.strMeasure6 },
-        { ingredient: display?.strIngredient7, measure: display?.strMeasure7 },
-        { ingredient: display?.strIngredient8, measure: display?.strMeasure8 },
+  const ingredientsWithMeasures = [
+    { ingredient: display?.strIngredient1, measure: display?.strMeasure1 },
+    { ingredient: display?.strIngredient2, measure: display?.strMeasure2 },
+    { ingredient: display?.strIngredient3, measure: display?.strMeasure3 },
+    { ingredient: display?.strIngredient4, measure: display?.strMeasure4 },
+    { ingredient: display?.strIngredient5, measure: display?.strMeasure5 },
+    { ingredient: display?.strIngredient6, measure: display?.strMeasure6 },
+    { ingredient: display?.strIngredient7, measure: display?.strMeasure7 },
+    { ingredient: display?.strIngredient8, measure: display?.strMeasure8 },
+  ];
 
-    ];
-
-    return (
-        <>
-            <div className="flip-card my-7">
+  return (
+    <>
+      {/* <div className="flip-card my-7">
                 <div className="flip-card-inner">
                     <div className="flip-card-front flex justify-center items-center">
                         <div className="profile-image my-auto">
@@ -80,9 +77,23 @@ const Flashcard = ({ cocktail }) => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    )
-}
+            </div> */}
+      <div className="card w-96 bg-base-100 shadow-xl mt-5">
+        <figure>
+          <img
+            src={strDrinkThumb}
+            alt="Cocktail Pic"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{strDrink}</h2>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Flashcard;

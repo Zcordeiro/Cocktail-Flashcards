@@ -14,7 +14,7 @@ const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between bg-gradient-to-r from-sky-700 to-cyan-400 w-full">
+    <div className="flex items-center justify-between bg-gradient-to-bl from-gray-700 via-gray-900 to-black w-full">
       <Link href='/' className='text-2xl font-bold text-center'>
         <img className="w-32 h-32 md:ml-12" src="/images/logo/mainLogo2.png" alt="ZC Logo" />
       </Link>
