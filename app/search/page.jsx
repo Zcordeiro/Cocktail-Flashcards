@@ -12,6 +12,12 @@ const searchPage = () => {
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`
     );
     const data = await res.json();
+
+    if (!data.drinks) {
+      setCocktails(null);
+      return alert("No cocktails found");
+    }
+
     setCocktails(data.drinks[0]);
   };
 
