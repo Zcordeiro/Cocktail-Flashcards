@@ -46,39 +46,70 @@ const topCocktails = [
   "Bramble",
   "Caipirinha",
   "Clover Club",
-  "Drambuie Sour",
   "Espresso Martini",
-  "Gibson",
   "Grasshopper",
   "Harvey Wallbanger",
-  "Hemingway Daiquiri",
-  "Jungle Bird",
 ];
 
-const topPage = () => {
+const TopPage = () => {
   const [cocktails, setCocktails] = useState([]);
+  const [selectedCocktail, setSelectedCocktail] = useState(null);
 
-  const fetchCocktails = async () => {
+  const fetchCocktails = async (cocktailName) => {
     const res = await fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${
-        topCocktails[Math.floor(Math.random() * topCocktails.length)]
-      }`
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
     );
     const data = await res.json();
     setCocktails(data.drinks);
   };
 
   useEffect(() => {
-    fetchCocktails();
+    fetchCocktails(topCocktails[Math.floor(Math.random() * topCocktails.length)]);
   }, []);
 
   const handleNext = () => {
-    fetchCocktails();
+    fetchCocktails(topCocktails[Math.floor(Math.random() * topCocktails.length)]);
+    setSelectedCocktail(null);
+  };
+
+  const handleSelect = async (e) => {
+    const cocktailName = e.target.textContent;
+    const res = await fetch(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktailName}`
+    );
+    const data = await res.json();
+    setSelectedCocktail(data.drinks[0]);
   };
 
   return (
     <div className="bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-800 w-full py-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
       <h1 className="text-6xl font-bold py-6 text-center">Top 50 Flashcards</h1>
+
+      <div className="flex flex-col justify-center">
+        <h1 className="text-4xl font-bold py-6 text-center">
+          List of the top 50 cocktails
+        </h1>
+        {selectedCocktail && (
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-4xl font-bold py-6 text-center">
+            {selectedCocktail.strDrink}
+          </h2>
+          <Flashcard cocktail={selectedCocktail} />
+        </div>
+      )}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center">
+          {topCocktails.map((cocktail) => (
+            <div key={cocktail}>
+              <button
+                className="btn btn-outline btn-accent btn-lg m-2"
+                onClick={handleSelect}
+              >
+                <span className="text-2xl font-bold">{cocktail}</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="flex justify-center">
         <button
@@ -89,12 +120,18 @@ const topPage = () => {
         </button>
       </div>
 
+    
+
       {cocktails &&
+        !selectedCocktail &&
         cocktails.map((cocktail) => (
           <div
-            key={cocktail}
+            key={cocktail.idDrink}
             className="flex flex-col items-center justify-center"
           >
+            <h2 className="text-4xl font-bold py-6 text-center">
+              {cocktail.strDrink}
+            </h2>
             <Flashcard cocktail={cocktail} />
           </div>
         ))}
@@ -102,4 +139,4 @@ const topPage = () => {
   );
 };
 
-export default topPage;
+export default TopPage;
