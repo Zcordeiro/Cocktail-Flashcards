@@ -29,7 +29,6 @@ const browsePage = () => {
       cocktail.strDrink.toLowerCase().startsWith(letter.toLowerCase())
     );
     setFilteredCocktails(filteredData);
-    console.log(filteredData);
   };
 
 //   const fetchCocktailByLiquor = async (liquor) => {
