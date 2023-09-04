@@ -52,7 +52,7 @@ const Nav = () => {
               <a href="/">Home</a>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
-              <a href="/top">Top 50</a>
+              <a href="/top">Top</a>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
               <a href="/browse">Browse</a>
@@ -75,7 +75,7 @@ const Nav = () => {
           </li>
           <li>
             <Link href="/top" className={`p-3 text-white hover:text-blue-200 hover:font-bold hover:text-2xl text-xl mx-6 ${lato.className}`}>
-              top 50
+              top
             </Link>
           </li>
           <li>
