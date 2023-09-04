@@ -1,18 +1,16 @@
 import { Shadows_Into_Light, Kalam } from "next/font/google";
 
 export const shadows_into_light = Shadows_Into_Light({
-    subsets: ["latin"],
-    display: "swap",
-    weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
 });
 
 export const kalam = Kalam({
-    subsets: ["latin"],
-    display: "swap",
-    weight: "400",
+  subsets: ["devanagari"],
+  display: "swap",
+  weight: "400",
 });
-
-
 
 const Flipcard = ({ cocktail }) => {
   const {
@@ -55,19 +53,46 @@ const Flipcard = ({ cocktail }) => {
     { ingredient: ingredient10, measure: ingredientAmount10 },
   ];
 
+  const getTagColor = (tag) => {
+    if (tag === "Sour") {
+      return "badge badge-success";
+    } else if (tag === "Sweet") {
+      return "badge badge-error";
+    } else if (tag === "Strong") {
+      return "badge badge-warning";
+    } else if (tag === "Bitter") {
+      return "badge badge-accent";
+    } else if (tag === "Fruity") {
+      return "badge badge-info";
+    } else {
+      return "badge badge-neutral";
+    }
+  };
+
   return (
-    <div className="flip-card my-7">
+    <div className="flip-card my-7 rounded-xl">
       <div className="flip-card-inner">
         <div className="flip-card-front flex justify-center items-center">
           <div className="profile-image my-auto">
-            {image ? <img src={image} className="rounded-xl" width={150} height={150} alt="Cocktail Pic" /> : <div></div>}
+            {image ? (
+              <img
+                src={image}
+                className="rounded-xl mx-auto"
+                width={150}
+                height={150}
+                alt="Cocktail Pic"
+              />
+            ) : (
+              <div></div>
+            )}
 
-            <div className="name">{name}</div>
+            <div className="name text-blue-900">{name}</div>
 
-            <div className={`tags ${kalam}`}>
+            <div className={`tags ${shadows_into_light.className}`}>
               {flavorTags.map((tag, index) => {
+                const tagColor = getTagColor(tag);
                 return (
-                  <div key={index} className="tag">
+                  <div key={index} className={`tag ${tagColor} mx-4`}>
                     {tag}
                   </div>
                 );
@@ -76,19 +101,27 @@ const Flipcard = ({ cocktail }) => {
           </div>
         </div>
         <div className="flex items-center flip-card-back">
-          <div className={`${kalam} text-lg`}>
-            <p className="text-sm ">{instructions}</p>
-            <div className="ingredients">
+          <div className={`${kalam.className}`}>
+            
+            <div className="ingredients grid grid-cols-2">
               {ingredientsWithMeasures.map((ingrediant, index) => {
                 if (ingrediant.ingredient) {
                   return (
-                    <div key={index} className="text-base mb-3">
+                    <div
+                      key={index}
+                      className="text-lg mb-3 text-orange-500 underline"
+                    >
                       {ingrediant.ingredient} - {ingrediant.measure}
                     </div>
                   );
                 }
               })}
             </div>
+            <hr className="my-3" />
+
+            <p className="text-base mb-5 text-blue-900 underline">
+              {instructions}
+            </p>
           </div>
         </div>
       </div>

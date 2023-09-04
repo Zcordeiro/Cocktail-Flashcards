@@ -1,4 +1,4 @@
-import Flipcard from "@/components/Flipcard";
+// import Flipcard from "@/components/Flipcard";
 
 // const mockCocktail = {
 //   name: "Margarita",
@@ -12,16 +12,16 @@ import Flipcard from "@/components/Flipcard";
 //     ingredientAmount1: "1 1/2 oz ",
 //     ingredientAmount2: "1/2 oz ",
 //     ingredientAmount3: "1 oz ",
-//     ingredientAmount4: "",
+//     ingredientAmount4: "rim",
 //     instructions: "Rub rim of cocktail glass with lime juice. Dip rim in salt. Shake ingredients with ice, strain into the glass, and serve.",
-//     flavorTags: ["Sour", "Strong"],
+//     flavorTags: ["Sour", "Strong", "Bitter", "Fruity", "Sweet", "Sour", "Strong", "Bitter", "Fruity", "Sweet"],
 // };
 
 
 
 export default function Home() {
   return (
-    <div className="hero min-h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-900">
+    <div className="hero min-h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-900 w-full">
       <div className="hero-content text-center">
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Hello there</h1>
@@ -31,8 +31,8 @@ export default function Home() {
             browse through top drinks, or get a random flashcard. Enjoy!
           </p>
           <a href="/random" className="btn btn-accent">Get Started with a random cocktal</a>
-{/* 
-          <Flipcard cocktail={mockCocktail} /> */}
+
+          {/* <Flipcard cocktail={mockCocktail} /> */}
         </div>
       </div>
     </div>

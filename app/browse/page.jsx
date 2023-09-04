@@ -31,14 +31,14 @@ const browsePage = () => {
     setFilteredCocktails(filteredData);
   };
 
-//   const fetchCocktailByLiquor = async (liquor) => {
-//     const res = await fetch(
-//       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${liquor}`
-//     );
-//     const data = await res.json();
-//     console.log(data);
-//     setCocktails(data.drinks);
-//   };
+  //   const fetchCocktailByLiquor = async (liquor) => {
+  //     const res = await fetch(
+  //       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${liquor}`
+  //     );
+  //     const data = await res.json();
+  //     console.log(data);
+  //     setCocktails(data.drinks);
+  //   };
 
   return (
     <div className="bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-800  w-full px-7 py-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
