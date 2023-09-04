@@ -17,24 +17,30 @@
 //     flavorTags: ["Sour", "Strong", "Bitter", "Fruity", "Sweet", "Sour", "Strong", "Bitter", "Fruity", "Sweet"],
 // };
 
-
-
 export default function Home() {
   return (
-    <div className="hero min-h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-900 w-full">
-      <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Hello there</h1>
-          <p className="py-6">
-            This is a cocktail flashcard app built to help you learn the
-            ingredients of your favorite cocktails. You can search for a drink,
-            browse through top drinks, or get a random flashcard. Enjoy!
-          </p>
-          <a href="/random" className="btn btn-accent">Get Started with a random cocktal</a>
+    <>
+      <div className="backgroundImage ">
+        <div className="bg-slate-950/40 min-h-screen">
+          <div className="hero-content text-center mx-auto">
+            <div className="max-w-md mt-20 bg-gradient-to-r from-green-400 via-green-200 to-yellow-300 bg-clip-text text-transparent">
+              <h1 className="text-5xl font-extrabold">WELCOME!</h1>
+             
+              <p className="my-5 font-bold text-2xl">
+                This simple cocktail app built to help you learn the
+                ingredients of your favorite cocktails. You can search for a
+                drink, browse through top drinks, or get a random flashcard.
+                Enjoy!
+              </p>
 
-          {/* <Flipcard cocktail={mockCocktail} /> */}
+              <a href="/random" className="btn btn-info btn-lg mt-3">
+                Click here to get started with a random cocktal
+              </a>
+              
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

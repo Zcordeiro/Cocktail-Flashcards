@@ -25,8 +25,35 @@
 }
 /* ***** */
 
+/* Main Hero Image and responsiveness */
+.backgroundImage {
+  background-image: url('/images/mainImage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  alt: 'Main Image';
+}
 
-/* This section below is the individual cards and effects in the about us section */
+@media (max-width: 768px) {
+  .backgroundImage {
+    height: 50vh;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .backgroundImage {
+    height: 70vh;
+  }
+}
+@media (min-width: 1025px) {
+  .backgroundImage {
+    height: 100vh;
+  }
+}
+/*  ****  */
+
+
+/* This section below is the individual flip cards and effects */
 .flip-card {
   background-color: transparent;
   width: 450px;
