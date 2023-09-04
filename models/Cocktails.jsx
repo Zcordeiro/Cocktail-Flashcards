@@ -8,6 +8,10 @@ const cocktailSchema = new Schema({
   alternateName: {
     type: String,
   },
+  mainLiquor: {
+    type: String,
+    required: true,
+  },
   ingredient1: {
     type: String,
     required: true,
@@ -83,6 +87,11 @@ const cocktailSchema = new Schema({
     type: Boolean,
     default: false,
     required: true,
+  },
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    default: null,
   },
 });
 
