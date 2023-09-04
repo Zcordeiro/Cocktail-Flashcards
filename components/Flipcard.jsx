@@ -15,6 +15,7 @@ export const kalam = Kalam({
 const Flipcard = ({ cocktail }) => {
   const {
     name,
+    mainLiquor,
     image,
     instructions,
     flavorTags,
@@ -62,17 +63,46 @@ const Flipcard = ({ cocktail }) => {
       return "badge badge-warning";
     } else if (tag === "Bitter") {
       return "badge badge-accent";
+    } else if (tag === "Citrusy") {
+      return "badge badge-primary";
     } else if (tag === "Fruity") {
       return "badge badge-info";
+    } else if (tag === "Bubbly") {
+      return "badge badge-outline badge-secondary";
+    } else if (tag === "Tangy") {
+      return "badge badge-secondary";
+    } else if (tag === "Refreshing") {
+      return "badge badge-warning";
+    } else if (tag === "Spicy") {
+      return "badge badge-error";
+    }
+  };
+
+  const getLiquorColor = (liquor) => {
+    if (liquor === "Vodka") {
+      return "badge badge-info text-neutral-50 badge-lg";
+    } else if (liquor === "Gin") {
+      return "badge badge-neutral text-neutral-50 badge-lg";
+    } else if (liquor === "Rum") {
+      return "badge badge-accent text-neutral-50 badge-lg";
+    } else if (liquor === "Tequila") {
+      return "badge badge-secondary text-neutral-50 badge-lg";
+    } else if (liquor === "Whiskey") {
+      return "badge badge-warning  text-neutral-50 badge-lg";
     } else {
-      return "badge badge-neutral";
+      return "badge badge-outline text-neutral-50 badge-lg";
     }
   };
 
   return (
     <div className="flip-card my-7 rounded-xl">
       <div className="flip-card-inner">
-        <div className="flip-card-front flex justify-center items-center">
+        <div className="flip-card-front flex flex-col justify-center items-center">
+          {mainLiquor ? (
+            <div className={`${getLiquorColor(mainLiquor)}`}>{mainLiquor}</div>
+          ) : (
+            <div></div>
+          )}
           <div className="profile-image my-auto">
             {image ? (
               <img
@@ -102,7 +132,6 @@ const Flipcard = ({ cocktail }) => {
         </div>
         <div className="flex items-center flip-card-back">
           <div className={`${kalam.className}`}>
-            
             <div className="ingredients grid grid-cols-2">
               {ingredientsWithMeasures.map((ingrediant, index) => {
                 if (ingrediant.ingredient) {
