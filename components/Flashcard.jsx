@@ -57,22 +57,22 @@ const Flashcard = ({ cocktail }) => {
               checked={showIngredients}
               onChange={(e) => setShowIngredients(e.target.checked)}
             />
-            <label>See More</label>
+            <label>See Recipe</label>
           </div>
 
           {showIngredients && (
             <>
               <div className="text-xl text-neutral-950 font-bold mb-5 underline">
-                Ingrediants Used
+                Ingredients Used
               </div>
-              {ingredientsWithMeasures.map((ingrediant, index) => {
-                if (ingrediant.ingredient) {
+              {ingredientsWithMeasures.map((ingredient, index) => {
+                if (ingredient.ingredient) {
                   return (
                     <div
                       key={index}
                       className="text-base text-neutral-950 mb-3"
                     >
-                      {ingrediant.ingredient} - {ingrediant.measure}
+                      {ingredient.ingredient} - {ingredient.measure}
                     </div>
                   );
                 }
