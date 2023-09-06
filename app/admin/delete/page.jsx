@@ -26,13 +26,12 @@ const deletePage = () => {
       "Are you sure you want to delete this cocktail?"
     );
     if (confirm) {
-      console.log("cocktailID: ", id);
-      // const response = await fetch(`/api/cocktails/${id}`, {
-      //   method: "DELETE",
-      // });
-      // const data = await response.json();
-      // alert("Cocktail Deleted!");
-      // getCocktails();
+      const response = await fetch(`/api/cocktails/${id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      alert("Cocktail Deleted!");
+      window.location.reload();
     }
   };
 
