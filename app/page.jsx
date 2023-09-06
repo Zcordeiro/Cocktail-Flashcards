@@ -1,22 +1,3 @@
-// import Flipcard from "@/components/Flipcard";
-
-// const mockCocktail = {
-//   name: "Margarita",
-//   image:
-//     "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
-//     alternateName: "Margarita",
-//     ingredient1: "Tequila",
-//     ingredient2: "Triple sec",
-//     ingredient3: "Lime juice",
-//     ingredient4: "Salt",
-//     ingredientAmount1: "1 1/2 oz ",
-//     ingredientAmount2: "1/2 oz ",
-//     ingredientAmount3: "1 oz ",
-//     ingredientAmount4: "rim",
-//     instructions: "Rub rim of cocktail glass with lime juice. Dip rim in salt. Shake ingredients with ice, strain into the glass, and serve.",
-//     flavorTags: ["Sour", "Strong", "Bitter", "Fruity", "Sweet", "Sour", "Strong", "Bitter", "Fruity", "Sweet"],
-// };
-
 export default function Home() {
   return (
     <>

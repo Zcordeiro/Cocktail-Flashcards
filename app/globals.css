@@ -105,7 +105,6 @@
 
 .flip-card-back {
   background-color: #cfd8dc;
-  /* background: radial-gradient(at 50% 100%, rgb(255, 255, 255), rgb(197, 197, 197)); */
   border: 4px solid #304362;
   transform: rotateY(180deg);
   padding: 11px;

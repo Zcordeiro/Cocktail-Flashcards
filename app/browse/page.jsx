@@ -7,19 +7,6 @@ const browsePage = () => {
   const [cocktails, setCocktails] = useState([]);
   const [filteredCocktails, setFilteredCocktails] = useState([]);
 
-  // const fetchCocktails = async () => {
-  //     const res = await fetch(
-  //         "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
-  //     );
-  //     const data = await res.json();
-  //     setCocktails(data.drinks);
-  //     setFilteredCocktails(data.drinks);
-  // };
-
-  // useEffect(() => {
-  //     fetchCocktails();
-  // }, []);
-
   const fetchCocktailByLetter = async (letter) => {
     const res = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`
@@ -31,35 +18,9 @@ const browsePage = () => {
     setFilteredCocktails(filteredData);
   };
 
-  //   const fetchCocktailByLiquor = async (liquor) => {
-  //     const res = await fetch(
-  //       `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${liquor}`
-  //     );
-  //     const data = await res.json();
-  //     console.log(data);
-  //     setCocktails(data.drinks);
-  //   };
-
   return (
     <div className="bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-800  w-full px-7 py-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
       <h1 className="text-center text-6xl font-bold py-6">Browse flashcards</h1>
-
-      {/* <div className="">
-        Liquor:
-        <ul className="grid grid-cols-3 md:grid-cols-5 m-5">
-          {["Gin", "Rum", "Tequila", "Vodka", "Whiskey"].map((liquor) => {
-            return (
-              <li
-                key={liquor}
-                className="btn btn-outline m-2"
-                onClick={() => fetchCocktailByLiquor(liquor)}
-              >
-                {liquor}
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
 
       <div className="">
         Alphabetical:
