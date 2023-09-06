@@ -37,7 +37,7 @@ const viewAllPage = () => {
         {cocktails.map((cocktail) => (
           <button
             key={cocktail._id}
-            className="btn btn-outline btn-warning m-3"
+            className="btn btn-outline btn-secondary m-3"
             onClick={() => handleSelect(cocktail)}
           >
             <h2 className="text-3xl">{cocktail.name}</h2>

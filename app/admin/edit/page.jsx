@@ -23,33 +23,72 @@ const editPage = () => {
   };
 
   const editCocktail = async (cocktail) => {
-    const response = await fetch(`/api/cocktails/${cocktail._id}`, {
-      method: "PUT",
-      body: JSON.stringify(cocktail),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log("data: ", data);
-    getCocktails();
-    setCocktailToEdit(null);
+    const confirm = window.confirm(
+      "Are you sure you want to edit this cocktail?"
+    );
+    if (confirm) {
+        const response = await fetch(`/api/cocktails/${cocktail._id}`, {
+          method: "PUT",
+          body: JSON.stringify(cocktail),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        console.log("data: ", data);
+        getCocktails();
+        setCocktailToEdit(null);
+    }
   };
 
   return (
     <div className="text-center min-h-screen p-12">
-      <h1 className="text-5xl">All cocktails currently in the Database</h1>
+      <h1 className="text-5xl">Edit cocktails currently in the Database</h1>
 
       {cocktailToEdit && (
         <div className="flex flex-col justify-center">
-          <label className="block text-2xl mt-4">Name</label>
+          <div className="flex flex-row justify-evenly my-5">
+            <div>
+              <label className="block text-2xl mt-4">Name</label>
+              <input
+                className="input input-bordered input-lg input-info"
+                type="text"
+                name="name"
+                value={cocktailToEdit.name}
+                onChange={(e) =>
+                  setCocktailToEdit({ ...cocktailToEdit, name: e.target.value })
+                }
+              />
+            </div>
+
+            <div>
+              <label className="block text-2xl mt-4">Alt Name</label>
+              <input
+                className="input input-bordered input-lg input-info"
+                type="text"
+                name="alternateName"
+                value={cocktailToEdit.alternateName}
+                onChange={(e) =>
+                  setCocktailToEdit({
+                    ...cocktailToEdit,
+                    alternateName: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </div>
+
+          <label className="block text-2xl mt-4">Main Liquor</label>
           <input
             className="input input-bordered input-lg input-info"
             type="text"
-            name="name"
-            value={cocktailToEdit.name}
+            name="mainLiquor"
+            value={cocktailToEdit.mainLiquor}
             onChange={(e) =>
-              setCocktailToEdit({ ...cocktailToEdit, name: e.target.value })
+              setCocktailToEdit({
+                ...cocktailToEdit,
+                mainLiquor: e.target.value,
+              })
             }
           />
 
@@ -59,11 +98,14 @@ const editPage = () => {
             name="approved"
             value={cocktailToEdit.approved}
             onChange={(e) =>
-              setCocktailToEdit({ ...cocktailToEdit, approved: e.target.value })
+              setCocktailToEdit({
+                ...cocktailToEdit,
+                approved: JSON.parse(e.target.value),
+              })
             }
           >
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
 
           <label className="block text-2xl mt-4">Top?</label>
@@ -72,11 +114,14 @@ const editPage = () => {
             name="top"
             value={cocktailToEdit.top}
             onChange={(e) =>
-              setCocktailToEdit({ ...cocktailToEdit, top: e.target.value })
+              setCocktailToEdit({
+                ...cocktailToEdit,
+                top: JSON.parse(e.target.value),
+              })
             }
           >
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value={true}>Yes</option>
+            <option value={false}>No</option>
           </select>
 
           <label className="block text-2xl mt-4">Instructions</label>
@@ -363,6 +408,328 @@ const editPage = () => {
               />
             </div>
           </div>
+
+          <div className="flavorTags">
+            <label className="block text-2xl">Flavor Tags:</label>
+            <div className="flex flex-row justify-evenly my-5">
+              <div className="bitter">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Bitter"
+                    checked={cocktailToEdit.flavorTags.includes("Bitter")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Bitter
+                </label>
+              </div>
+
+              <div className="bubbly">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Bubbly"
+                    checked={cocktailToEdit.flavorTags.includes("Bubbly")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Bubbly
+                </label>
+              </div>
+
+              <div className="citrusy">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Citrusy"
+                    checked={cocktailToEdit.flavorTags.includes("Citrusy")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Citrusy
+                </label>
+              </div>
+
+              <div className="fruity">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Fruity"
+                    checked={cocktailToEdit.flavorTags.includes("Fruity")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Fruity
+                </label>
+              </div>
+
+              <div className="refreshing">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Refreshing"
+                    checked={cocktailToEdit.flavorTags.includes("Refreshing")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Refreshing
+                </label>
+              </div>
+
+              <div className="sour">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Sour"
+                    checked={cocktailToEdit.flavorTags.includes("Sour")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Sour
+                </label>
+              </div>
+
+              <div className="spicy">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Spicy"
+                    checked={cocktailToEdit.flavorTags.includes("Spicy")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Spicy
+                </label>
+              </div>
+
+              <div className="strong">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Strong"
+                    checked={cocktailToEdit.flavorTags.includes("Strong")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Strong
+                </label>
+              </div>
+
+              <div className="sweet">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Sweet"
+                    checked={cocktailToEdit.flavorTags.includes("Sweet")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Sweet
+                </label>
+              </div>
+
+              <div className="tangy">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="flavorTags"
+                    value="Tangy"
+                    checked={cocktailToEdit.flavorTags.includes("Tangy")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCocktailToEdit((prevCocktail) => {
+                        const flavorTags = prevCocktail.flavorTags;
+                        if (flavorTags.includes(value)) {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: flavorTags.filter(
+                              (tag) => tag !== value
+                            ),
+                          };
+                        } else {
+                          return {
+                            ...prevCocktail,
+                            flavorTags: [...flavorTags, value],
+                          };
+                        }
+                      });
+                    }}
+                  />
+                  Tangy
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <button
+            className="btn btn-outline btn-info m-3 w-1/2 mx-auto"
+            onClick={() => editCocktail(cocktailToEdit)}
+          >
+            <h2 className="text-3xl">Edit Cocktail</h2>
+          </button>
         </div>
       )}
 
@@ -370,7 +737,7 @@ const editPage = () => {
         {cocktails.map((cocktail) => (
           <button
             key={cocktail._id}
-            className="btn btn-outline btn-warning m-3"
+            className="btn btn-outline btn-info m-3"
             onClick={() => handleSelect(cocktail)}
           >
             <h2 className="text-3xl">{cocktail.name}</h2>
