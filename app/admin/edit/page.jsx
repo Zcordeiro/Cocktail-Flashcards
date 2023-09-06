@@ -11,7 +11,6 @@ const editPage = () => {
     const response = await fetch("/api/cocktails");
     const data = await response.json();
     setCocktails(data);
-    console.log("data: ", data);
   };
 
   useEffect(() => {
