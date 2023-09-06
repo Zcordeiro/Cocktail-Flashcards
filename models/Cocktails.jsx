@@ -83,6 +83,10 @@ const cocktailSchema = new Schema({
   image: {
     type: String,
   },
+  top: {
+    type: Boolean,
+    default: true,
+  },
   approved: {
     type: Boolean,
     default: false,
