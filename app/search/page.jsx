@@ -26,7 +26,7 @@ const searchPage = () => {
   }, []);
 
   return (
-    <div className="bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-700 via-indigo-900 to-emerald-800  w-full px-7 py-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
+    <div className="bg-cover bg-no-repeat bg-[url('/images/heroImage.jpg')] bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
       <h1 className="text-6xl font-bold py-6 text-center">
         Search for a drink
       </h1>

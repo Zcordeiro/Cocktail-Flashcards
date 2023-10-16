@@ -42,8 +42,8 @@ const Flashcard = ({ cocktail }) => {
 
   return (
     <>
-
-      <div className="card w-80 bg-base-100 shadow-xl mt-5">
+  <div className="bg-slate-800/75 w-1/2">
+      <div className="card w-80 bg-base-100 shadow-xl my-5 mx-auto">
         <figure>
           <img src={strDrinkThumb} alt="Cocktail Pic" />
         </figure>
@@ -86,6 +86,7 @@ const Flashcard = ({ cocktail }) => {
 
           
         </div>
+      </div>
       </div>
     </>
   );
