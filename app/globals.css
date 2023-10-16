@@ -27,7 +27,7 @@
 
 /* Main Hero Image and responsiveness */
 .backgroundImage {
-  background-image: url('/images/mainImage.jpg');
+  background-image: url('/images/heroImage.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

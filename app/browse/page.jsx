@@ -19,7 +19,7 @@ const browsePage = () => {
   };
 
   return (
-    <div className="bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-emerald-600 via-indigo-800 to-emerald-800  w-full px-7 py-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
+    <div className="bg-cover bg-no-repeat bg-[url('/images/heroImage.jpg')] bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-screen">
       <h1 className="text-center text-6xl font-bold py-6">Browse flashcards</h1>
 
       <div className="">
@@ -30,7 +30,7 @@ const browsePage = () => {
             return (
               <li
                 key={letter}
-                className="btn btn-outline m-2"
+                className="btn btn-info m-2"
                 onClick={() => fetchCocktailByLetter(letter)}
               >
                 {letter.toUpperCase()}
