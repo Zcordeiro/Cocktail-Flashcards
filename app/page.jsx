@@ -10,18 +10,19 @@ export default function Home() {
               <a href="/random" className="btn btn-info btn-lg md:hidden">
                 Click here to get started with a random cocktal
               </a>
-             
+
               <p className="my-5 font-bold text-2xl">
-                This simple cocktail app built to help you learn the
-                ingredients of your favorite cocktails. You can search for a
-                drink, browse through top drinks, or get a random flashcard.
-                Enjoy!
+                This simple cocktail app built to help you learn the ingredients
+                of your favorite cocktails. You can search for a drink, browse
+                through top drinks, or get a random flashcard. Enjoy!
               </p>
 
-              <a href="/random" className="hidden md:btn md:btn-info md:btn-lg mt-3">
+              <a
+                href="/random"
+                className="hidden md:btn md:btn-info md:btn-lg mt-3"
+              >
                 Click here to get started with a random cocktal
               </a>
-              
             </div>
           </div>
         </div>
