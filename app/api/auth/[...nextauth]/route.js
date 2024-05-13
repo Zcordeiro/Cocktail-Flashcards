@@ -29,11 +29,6 @@ const options = {
             },
         }),
     ],
-
-    session: {
-        jwt: true,
-        maxAge: 30 * 24 * 60 * 60,
-    },
 };
 
 const handler = (req, res) => NextAuth(req, res, options);

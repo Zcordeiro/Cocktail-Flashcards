@@ -1,21 +1,11 @@
-"use client";
+import { connectToDatabase } from "@/utils/database";
+import Cocktail from "@/models/Cocktails";
 
-import { useEffect, useState } from "react";
 import Flipcard from "@/components/Flipcard";
 
-const TopPage = () => {
-  const [cocktails, setCocktails] = useState([]);
-
-  const fetchCocktails = async () => {
-    const response = await fetch("/api/cocktails");
-    const data = await response.json();
-    setCocktails(data);
-    console.log(data);
-  };
-
-  useEffect(() => {
-    fetchCocktails();
-  }, []);
+const TopPage = async () => {
+  await connectToDatabase();
+  const cocktails = await Cocktail.find({});
 
   return (
     <div className="bg-cover bg-no-repeat bg-[url('/images/heroImage.jpg')] bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-fit">

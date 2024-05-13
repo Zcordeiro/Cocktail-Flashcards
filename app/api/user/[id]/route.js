@@ -2,15 +2,15 @@ import { connectToDatabase } from "@/utils/database";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
 
-export const GET = async (req, { params }) => {
-  try {
-    await connectToDatabase();
-    const user = await User.findById(params.id);
-    return new Response(JSON.stringify(user), { status: 200 });
-  } catch (error) {
-    return new Response(error, { status: 500 });
-  }
-};
+// export const GET = async (req, { params }) => {
+//   try {
+//     await connectToDatabase();
+//     const user = await User.findById(params.id);
+//     return new Response(JSON.stringify(user), { status: 200 });
+//   } catch (error) {
+//     return new Response(error, { status: 500 });
+//   }
+// };
 
 export const PUT = async (req, { params }) => {
   const { username, password, email, role } = await req.json();

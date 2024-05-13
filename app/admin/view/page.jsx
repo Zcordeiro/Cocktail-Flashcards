@@ -1,26 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { connectToDatabase } from "@/utils/database";
 import Flipcard from "@/components/Flipcard";
 import AdminLinks from "@/components/AdminLinks";
+import Cocktails from "@/models/Cocktails";
 
-const viewAllPage = () => {
-  const [cocktails, setCocktails] = useState([]);
-  const [selectedCocktail, setSelectedCocktail] = useState(null);
-
-  const getCocktails = async () => {
-    const response = await fetch("/api/cocktails");
-    const data = await response.json();
-    setCocktails(data);
-  };
-
-  useEffect(() => {
-    getCocktails();
-  }, []);
+const viewAllPage = async () => {
+  await connectToDatabase();
+  const cocktails = await Cocktails.find({});
+  const selectedCocktail = cocktails[0];
 
   const handleSelect = (cocktail) => {
-    setSelectedCocktail(cocktail);
-  };
+    console.log("Selected cocktail", cocktail);
+  }
 
   return (
     <div className="text-center min-h-screen p-12">

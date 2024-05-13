@@ -102,3 +102,4 @@ const cocktailSchema = new Schema({
 const Cocktail = models.Cocktail || model("Cocktail", cocktailSchema);
 
 module.exports = Cocktail;
+
