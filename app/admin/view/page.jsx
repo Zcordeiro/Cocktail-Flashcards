@@ -1,4 +1,3 @@
-"use client";
 
 import { connectToDatabase } from "@/utils/database";
 import Flipcard from "@/components/Flipcard";
@@ -9,10 +8,6 @@ const viewAllPage = async () => {
   await connectToDatabase();
   const cocktails = await Cocktails.find({});
   const selectedCocktail = cocktails[0];
-
-  const handleSelect = (cocktail) => {
-    console.log("Selected cocktail", cocktail);
-  }
 
   return (
     <div className="text-center min-h-screen p-12">
@@ -29,7 +24,6 @@ const viewAllPage = async () => {
           <button
             key={cocktail._id}
             className="btn btn-outline btn-secondary m-3"
-            onClick={() => handleSelect(cocktail)}
           >
             <h2 className="text-3xl">{cocktail.name}</h2>
           </button>
