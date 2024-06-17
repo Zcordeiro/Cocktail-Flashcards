@@ -62,7 +62,7 @@ const Flashcard = ({ cocktail }) => {
 
           {showIngredients && (
             <>
-              <div className="text-xl text-neutral-950 font-bold mb-5 underline">
+              <div className="text-xl text-neutral-100 font-bold mb-5 underline">
                 Ingredients Used
               </div>
               {ingredientsWithMeasures.map((ingredient, index) => {
@@ -70,14 +70,14 @@ const Flashcard = ({ cocktail }) => {
                   return (
                     <div
                       key={index}
-                      className="text-base text-neutral-950 mb-3"
+                      className="text-base text-neutral-100 mb-3"
                     >
                       {ingredient.ingredient} - {ingredient.measure}
                     </div>
                   );
                 }
               })}
-              <div className="text-sm text-neutral-950">
+              <div className="text-sm text-neutral-100">
             <div className="text-lg underline italic mr-3">Instructions:</div>
             {strInstructions}
           </div>
