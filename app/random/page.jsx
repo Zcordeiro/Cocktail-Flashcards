@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Flashcard from "@/components/Flashcard";
+import DisplayCard from "@/components/DisplayCard";
 
 const randomPage = () => {
   const [cocktails, setCocktails] = useState([]);
@@ -30,8 +31,11 @@ const randomPage = () => {
         </button>
       </div>
 
+      
+
       <div className="flex flex-col items-center justify-center">
-        <Flashcard cocktail={cocktails} />
+        {/* <Flashcard cocktail={cocktails} /> */}
+        <DisplayCard cocktail={cocktails} />
       </div>
     </div>
   );

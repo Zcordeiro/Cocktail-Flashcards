@@ -42,51 +42,51 @@ const Flashcard = ({ cocktail }) => {
 
   return (
     <>
-  <div className="">
-      <div className="card w-80 bg-base-100 shadow-xl my-5 mx-auto">
-        <figure>
-          <img src={strDrinkThumb} alt="Cocktail Pic" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">{strDrink}</h2>
-          <div className="card-actions justify-end">
-            <label>Hide</label>
-            <input
-              type="checkbox"
-              className="toggle toggle-success"
-              checked={showIngredients}
-              onChange={(e) => setShowIngredients(e.target.checked)}
-            />
-            <label>See Recipe</label>
-          </div>
+      <div className="">
+        <div className="card w-80 bg-base-100 shadow-xl my-5 mx-auto">
+          <figure>
+            <img src={strDrinkThumb} alt="Cocktail Pic" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{strDrink}</h2>
+            <div className="card-actions justify-end">
+              <label>Hide</label>
+              <input
+                type="checkbox"
+                className="toggle toggle-success"
+                checked={showIngredients}
+                onChange={(e) => setShowIngredients(e.target.checked)}
+              />
+              <label>See Recipe</label>
+            </div>
 
-          {showIngredients && (
-            <>
-              <div className="text-xl text-neutral-100 font-bold mb-5 underline">
-                Ingredients Used
-              </div>
-              {ingredientsWithMeasures.map((ingredient, index) => {
-                if (ingredient.ingredient) {
-                  return (
-                    <div
-                      key={index}
-                      className="text-base text-neutral-100 mb-3"
-                    >
-                      {ingredient.ingredient} - {ingredient.measure}
-                    </div>
-                  );
-                }
-              })}
-              <div className="text-sm text-neutral-100">
-            <div className="text-lg underline italic mr-3">Instructions:</div>
-            {strInstructions}
+            {showIngredients && (
+              <>
+                <div className="text-xl text-neutral-100 font-bold mb-5 underline">
+                  Ingredients Used
+                </div>
+                {ingredientsWithMeasures.map((ingredient, index) => {
+                  if (ingredient.ingredient) {
+                    return (
+                      <div
+                        key={index}
+                        className="text-base text-neutral-100 mb-3"
+                      >
+                        {ingredient.ingredient} - {ingredient.measure}
+                      </div>
+                    );
+                  }
+                })}
+                <div className="text-sm text-neutral-100">
+                  <div className="text-lg underline italic mr-3">
+                    Instructions:
+                  </div>
+                  {strInstructions}
+                </div>
+              </>
+            )}
           </div>
-            </>
-          )}
-
-          
         </div>
-      </div>
       </div>
     </>
   );
