@@ -3,6 +3,7 @@
 import {  useState } from "react";
 import Link from 'next/link'
 import { Lato } from "next/font/google";
+import ThemeController from "./ThemeController";
 
 export const lato = Lato({
   subsets: ['latin-ext'],
@@ -14,28 +15,30 @@ const Nav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="flex items-center justify-between bg-gradient-to-bl from-gray-700 via-gray-900 to-black w-full">
+    <div className="flex items-center justify-between bg-base-200 w-full">
       <Link href='/' className='text-2xl font-bold text-center'>
-        <img className="w-32 h-32 md:ml-12" src="/images/logo/mainLogo2.png" alt="ZC Logo" />
+        <img className="w-32 h-40 md:ml-12" src="/images/logo/mainLogo.png" alt="ZC Logo" />
       </Link>
+
+
       <nav>
-        <section className="MOBILE-MENU flex lg:hidden">
+        <section className="MOBILE-MENU flex flex-col lg:hidden">
           <div
             className="HAMBURGER-ICON space-y-2 m-10"
             onClick={() => setIsNavOpen((prev) => !prev)}
           >
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
-            <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
+            <span className="block h-0.5 w-8 animate-pulse bg-base-content"></span>
+            <span className="block h-0.5 w-8 animate-pulse bg-base-content"></span>
+            <span className="block h-0.5 w-8 animate-pulse bg-base-content"></span>
           </div>
 
-          <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+          <div className={isNavOpen ? "showMenuNav bg-base-100" : "hideMenuNav"}>
             <div
               className="absolute top-0 right-0 px-8 py-8"
               onClick={() => setIsNavOpen(false)}
             >
               <svg
-                className="h-8 w-8 text-gray-600"
+                className="h-8 w-8 text-base-content"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -48,19 +51,17 @@ const Nav = () => {
               </svg>
             </div>
             <ul className="flex flex-col items-center justify-between">
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-base-content my-8 uppercase">
               <a href="/">Home</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-base-content my-8 uppercase">
               <a href="/top">Top</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
-              <a href="/browse">Browse</a>
-              </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              
+              <li className="border-b border-base-content my-8 uppercase">
                 <a href="/random">Random</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-base-content my-8 uppercase">
                 <a href="/search">Search</a>
               </li>
             </ul>
@@ -78,11 +79,7 @@ const Nav = () => {
               top
             </Link>
           </li>
-          <li>
-            <Link href="/browse" className={`p-3 text-white hover:text-blue-200 hover:font-bold hover:text-2xl text-xl mx-6 ${lato.className}`}>
-              browse
-            </Link>
-          </li>
+          
           <li>
             <Link href="/random" className={`p-3 text-white hover:text-blue-200 hover:font-bold hover:text-2xl text-xl mx-6 ${lato.className}`}>
               random

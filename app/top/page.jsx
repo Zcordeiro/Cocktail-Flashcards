@@ -1,6 +1,5 @@
 import { connectToDatabase } from "@/utils/database";
 import Cocktail from "@/models/Cocktails";
-
 import Flipcard from "@/components/Flipcard";
 
 const TopPage = async () => {
@@ -8,12 +7,12 @@ const TopPage = async () => {
   const cocktails = await Cocktail.find({});
 
   return (
-    <div className="bg-cover bg-no-repeat bg-[url('/images/heroImage.jpg')] bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-fit">
+    <div className="bg-base-300 bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-fit">
       <h1 className="text-6xl font-bold py-6 text-center">
         Top Drinks Flashcards
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 mx-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 mx-5">
         {cocktails &&
           cocktails.map((cocktail) => (
             <div

@@ -64,7 +64,7 @@ const Flipcard = ({ cocktail }) => {
     } else if (tag === "Bitter") {
       return "badge badge-accent";
     } else if (tag === "Citrusy") {
-      return "badge badge-primary";
+      return "badge badge-primary-content";
     } else if (tag === "Fruity") {
       return "badge badge-info";
     } else if (tag === "Bubbly") {
@@ -80,24 +80,24 @@ const Flipcard = ({ cocktail }) => {
 
   const getLiquorColor = (liquor) => {
     if (liquor === "Vodka") {
-      return "badge badge-info text-neutral-50 badge-lg";
+      return "badge badge-info text-info-content badge-lg";
     } else if (liquor === "Gin") {
-      return "badge badge-neutral text-neutral-50 badge-lg";
+      return "badge badge-neutral text-neutral-content badge-lg";
     } else if (liquor === "Rum") {
-      return "badge badge-accent text-neutral-50 badge-lg";
+      return "badge badge-accent text-accent-content badge-lg";
     } else if (liquor === "Tequila") {
-      return "badge badge-secondary text-neutral-50 badge-lg";
+      return "badge badge-secondary text-secondary-content badge-lg";
     } else if (liquor === "Whiskey") {
-      return "badge badge-warning  text-neutral-50 badge-lg";
+      return "badge badge-warning  text-warning-content badge-lg";
     } else {
-      return "badge badge-outline text-neutral-50 badge-lg";
+      return "badge badge-outline text-outline-content badge-lg";
     }
   };
 
   return (
     <div className="flip-card my-7 rounded-xl">
       <div className="flip-card-inner">
-        <div className="flip-card-front flex flex-col justify-center items-center">
+        <div className="flip-card-front flex flex-col justify-center items-center bg-gradient-to-tr from-base-content to-primary/80">
           {mainLiquor ? (
             <div className={`${getLiquorColor(mainLiquor)}`}>{mainLiquor}</div>
           ) : (
@@ -116,7 +116,7 @@ const Flipcard = ({ cocktail }) => {
               <div></div>
             )}
 
-            <div className="name text-blue-900">{name}</div>
+            <div className="name text-primary-content">{name}</div>
 
             <div className={`tags ${shadows_into_light.className}`}>
               {flavorTags.map((tag, index) => {
@@ -130,15 +130,16 @@ const Flipcard = ({ cocktail }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center flip-card-back">
+        <div className="flex items-center flip-card-back bg-gradient-to-tr from-primary/80 to-base-200">
           <div className={`${kalam.className}`}>
+            <h2 className="text-3xl text-primary underline mb-4">{name}</h2>
             <div className="ingredients grid grid-cols-2">
               {ingredientsWithMeasures.map((ingrediant, index) => {
                 if (ingrediant.ingredient) {
                   return (
                     <div
                       key={index}
-                      className="text-lg mb-3 text-orange-500 underline"
+                      className="text-lg mb-3 text-base-content underline"
                     >
                       {ingrediant.ingredient} - {ingrediant.measure}
                     </div>
@@ -148,7 +149,7 @@ const Flipcard = ({ cocktail }) => {
             </div>
             <hr className="my-3" />
 
-            <p className="text-base mb-5 text-blue-900 underline">
+            <p className="text-base mb-5 text-base-content underline">
               {instructions}
             </p>
           </div>
