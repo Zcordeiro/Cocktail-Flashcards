@@ -8,17 +8,32 @@ const searchPage = () => {
   const [search, setSearch] = useState("");
 
   const fetchCocktails = async () => {
+    const res2 = await fetch("/api/cocktails", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data2 = await res2.json();
+    const drinkName = data2.map((drink) => drink.name);
+
+    if (drinkName.includes(search)) {
+      const drink = data2.find((drink) => drink.name === search);
+      setCocktails(drink);
+      console.log(drink, "data from database");
+    }
+
     const res = await fetch(
       `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`
     );
     const data = await res.json();
 
-    if (!data.drinks) {
+    if (data.drinks) {
+      setCocktails(data.drinks[0]);
+      console.log(data.drinks[0], "data from API ");
+    } else {
       setCocktails(null);
-      return alert("No cocktails found");
     }
-
-    setCocktails(data.drinks[0]);
   };
 
   useEffect(() => {

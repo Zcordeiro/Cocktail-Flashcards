@@ -23,10 +23,10 @@ const DisplayCard = ({ cocktail }) => {
           {strDrink}
         </h2>
 
-        <div className="flex flex-col-reverse items-center">
+        <div className="flex flex-col-reverse lg:flex-row items-center">
           <figure>
             <img
-              className="rounded-xl mx-auto lg:w-2/3 lg:mb-8 mt-2 border-2 border-base-content"
+              className="rounded-xl mx-auto lg:w-80 h-56 mb-8 lg:ml-2 mt-2 border-2 border-base-content"
               src={strDrinkThumb}
               alt={`${strDrink} Image`}
             />

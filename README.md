@@ -42,11 +42,6 @@ N/A
 All Cocktails currently are comming from this API:
 [The Cocktail DB](https://www.thecocktaildb.com/)
 
-## Screen Shot
-
-![Screenshot-published-site](./public/images/Screenshot1.png)
-![Screenshot-published-site](./public/images/Screenshot2.png)
-![Screenshot-published-site](./public/images/Screenshot3.png)
 
 # LINKS
 

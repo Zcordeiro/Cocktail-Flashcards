@@ -9,7 +9,7 @@ const TopPage = async () => {
   return (
     <div className="bg-base-300 bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-fit">
       <h1 className="text-6xl font-bold py-6 text-center">
-        Top Drinks Flashcards
+        Top Cocktails 
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-5">

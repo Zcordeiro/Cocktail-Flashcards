@@ -1,4 +1,3 @@
-
 import { connectToDatabase } from "@/utils/database";
 import Flipcard from "@/components/Flipcard";
 import AdminLinks from "@/components/AdminLinks";
