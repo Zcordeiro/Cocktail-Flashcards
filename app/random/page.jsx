@@ -34,8 +34,8 @@ const randomPage = () => {
       
 
       <div className="flex flex-col items-center justify-center">
-        {/* <Flashcard cocktail={cocktails} /> */}
-        <DisplayCard cocktail={cocktails} />
+        <Flashcard cocktail={cocktails} />
+        {/* <DisplayCard cocktail={cocktails} /> */}
       </div>
     </div>
   );
