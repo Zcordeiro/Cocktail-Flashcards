@@ -1,61 +1,159 @@
-const DisplayCard = ({ cocktail }) => {
-  const display = cocktail;
+import { Shadows_Into_Light, Kalam } from "next/font/google";
 
-  const strDrink = display?.strDrink;
-  const strDrinkThumb = display?.strDrinkThumb;
-  const strInstructions = display?.strInstructions;
+export const shadows_into_light = Shadows_Into_Light({
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
+});
+
+const DisplayCard = ({ cocktail }) => {
+  const {
+    name,
+    mainLiquor,
+    image,
+    instructions,
+    flavorTags,
+    ingredient1,
+    ingredient2,
+    ingredient3,
+    ingredient4,
+    ingredient5,
+    ingredient6,
+    ingredient7,
+    ingredient8,
+    ingredient9,
+    ingredient10,
+    ingredientAmount1,
+    ingredientAmount2,
+    ingredientAmount3,
+    ingredientAmount4,
+    ingredientAmount5,
+    ingredientAmount6,
+    ingredientAmount7,
+    ingredientAmount8,
+    ingredientAmount9,
+    ingredientAmount10,
+  } = cocktail;
 
   const ingredientsWithMeasures = [
-    { ingredient: display?.strIngredient1, measure: display?.strMeasure1 },
-    { ingredient: display?.strIngredient2, measure: display?.strMeasure2 },
-    { ingredient: display?.strIngredient3, measure: display?.strMeasure3 },
-    { ingredient: display?.strIngredient4, measure: display?.strMeasure4 },
-    { ingredient: display?.strIngredient5, measure: display?.strMeasure5 },
-    { ingredient: display?.strIngredient6, measure: display?.strMeasure6 },
-    { ingredient: display?.strIngredient7, measure: display?.strMeasure7 },
-    { ingredient: display?.strIngredient8, measure: display?.strMeasure8 },
+    { ingredient: ingredient1, measure: ingredientAmount1 },
+    { ingredient: ingredient2, measure: ingredientAmount2 },
+    { ingredient: ingredient3, measure: ingredientAmount3 },
+    { ingredient: ingredient4, measure: ingredientAmount4 },
+    { ingredient: ingredient5, measure: ingredientAmount5 },
+    { ingredient: ingredient6, measure: ingredientAmount6 },
+    { ingredient: ingredient7, measure: ingredientAmount7 },
+    { ingredient: ingredient8, measure: ingredientAmount8 },
+    { ingredient: ingredient9, measure: ingredientAmount9 },
+    { ingredient: ingredient10, measure: ingredientAmount10 },
   ];
 
-  return (
-    <div className="mt-4">
-      <div className="flex flex-col bg-gradient-to-tr from-primary/90 to-base-200 shadow-xl rounded-xl">
-        <h2 className="text-center mt-8 text-5xl text-base-content font-bold underline italic">
-          {strDrink}
-        </h2>
+  const getTagColor = (tag) => {
+    if (tag === "Sour") {
+      return "badge badge-success";
+    } else if (tag === "Sweet") {
+      return "badge badge-error";
+    } else if (tag === "Strong") {
+      return "badge badge-warning";
+    } else if (tag === "Bitter") {
+      return "badge badge-accent";
+    } else if (tag === "Citrusy") {
+      return "badge badge-primary-content";
+    } else if (tag === "Fruity") {
+      return "badge badge-info";
+    } else if (tag === "Bubbly") {
+      return "badge badge-outline badge-secondary";
+    } else if (tag === "Tangy") {
+      return "badge badge-secondary";
+    } else if (tag === "Refreshing") {
+      return "badge badge-warning";
+    } else if (tag === "Spicy") {
+      return "badge badge-error";
+    }
+  };
 
-        <div className="flex flex-col-reverse lg:flex-row items-center">
-          <figure>
+  const getLiquorColor = (liquor) => {
+    if (liquor === "Vodka") {
+      return "badge badge-info text-info-content badge-lg";
+    } else if (liquor === "Gin") {
+      return "badge badge-base-content text-base badge-lg";
+    } else if (liquor === "Rum") {
+      return "badge badge-accent text-accent-content badge-lg";
+    } else if (liquor === "Tequila") {
+      return "badge badge-secondary text-secondary-content badge-lg";
+    } else if (liquor === "Whiskey") {
+      return "badge badge-warning  text-warning-content badge-lg";
+    } else {
+      return "badge badge-outline text-outline-content badge-lg";
+    }
+  };
+
+  return (
+    <div className="m-2">
+      <div className="flex flex-col bg-gradient-to-tr from-primary/90 to-base-200 shadow-xl rounded-xl p-2 w-full h-fit lg:w-[550px] lg:h-[260px]">
+      <div className="flex flex-row justify-between">
+      <h2 className="text-2xl text-base-content font-bold underline italic">
+          {name}
+        </h2>
+        {mainLiquor ? (
+          <div className={`${getLiquorColor(mainLiquor)} flex mx-auto`}>
+            {mainLiquor}
+          </div>
+        ) : (
+          <div></div>
+        )}
+
+        
+      </div>
+
+        <div className="flex flex-row items-center">
+          {image ? (
             <img
-              className="rounded-xl mx-auto lg:w-80 h-56 mb-8 lg:ml-2 mt-2 border-2 border-base-content"
-              src={strDrinkThumb}
-              alt={`${strDrink} Image`}
+              src={image}
+              className="rounded-xl mx-auto"
+              width={150}
+              height={150}
+              alt="Cocktail Pic"
             />
-          </figure>
-          <div className="card-body">
+          ) : (
+            <div></div>
+          )}
+
+          <div className="ml-2">
             <>
-              <div className="text-xl text-neutral-100 font-bold mb-5 underline">
-                Ingredients Used
-              </div>
+              <div className="font-bold underline text-xs">Ingredients Used</div>
+              <div className="lg:grid lg:grid-cols-2">
               {ingredientsWithMeasures.map((ingredient, index) => {
                 if (ingredient.ingredient) {
                   return (
-                    <div
-                      key={index}
-                      className="text-base text-neutral-100 mb-3"
-                    >
+                    <div key={index} className="text-sm text-neutral-100 m-[2px] font-bold">
                       {ingredient.ingredient} - {ingredient.measure}
                     </div>
                   );
                 }
               })}
-              <div className="text-sm text-neutral-100">
-                <div className="text-lg underline italic mr-3">
+              </div>
+              <div className="text-sm">
+                <div className="underline italic mr-3">
                   Instructions:
                 </div>
-                {strInstructions}
+                {instructions}
               </div>
             </>
           </div>
+        </div>
+
+        <div
+          className={`flex justify-center mt-2 ${shadows_into_light.className}`}
+        >
+          {flavorTags.map((tag, index) => {
+            const tagColor = getTagColor(tag);
+            return (
+              <div key={index} className={`tag ${tagColor} mx-4`}>
+                {tag}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { connectToDatabase } from "@/utils/database";
 import Cocktail from "@/models/Cocktails";
 import Flipcard from "@/components/Flipcard";
+import DisplayCard from "@/components/DisplayCard";
 
 const TopPage = async () => {
   await connectToDatabase();
@@ -12,17 +13,16 @@ const TopPage = async () => {
         Top Cocktails 
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 mx-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 mx-4">
         {cocktails &&
           cocktails.map((cocktail) => (
             <div
               key={cocktail._id}
-              className="flex flex-col items-center justify-center"
+              className="flex items-center justify-center lg:justify-start"
             >
-              <h2 className="text-4xl font-bold py-3 text-center">
-                {cocktail.strDrink}
-              </h2>
-              <Flipcard cocktail={cocktail} />
+              {/* <Flipcard cocktail={cocktail} /> */}
+              <DisplayCard cocktail={cocktail} />
+
             </div>
           ))}
       </div>
