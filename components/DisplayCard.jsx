@@ -81,7 +81,7 @@ const DisplayCard = ({ cocktail }) => {
       return "badge badge-accent text-accent-content badge-lg";
     } else if (liquor === "Tequila") {
       return "badge badge-secondary text-secondary-content badge-lg";
-    } else if (liquor === "Whiskey") {
+    } else if (liquor === "Whiskey" || liquor === "Bourbon") {
       return "badge badge-warning  text-warning-content badge-lg";
     } else {
       return "badge badge-outline text-outline-content badge-lg";
@@ -90,21 +90,23 @@ const DisplayCard = ({ cocktail }) => {
 
   return (
     <div className="m-2">
-      <div className="flex flex-col bg-gradient-to-tr from-primary/90 to-base-200 shadow-xl rounded-xl p-2 w-full h-fit lg:w-[550px] lg:h-[260px]">
-      <div className="flex flex-row justify-between">
-      <h2 className="text-2xl text-base-content font-bold underline italic">
-          {name}
-        </h2>
+      <div className="flex flex-col justify-center bg-gradient-to-tr from-primary/90 to-base-200 shadow-xl rounded-xl p-2 w-full h-fit lg:w-[580px] lg:h-[320px]">
         {mainLiquor ? (
-          <div className={`${getLiquorColor(mainLiquor)} flex mx-auto`}>
+          <div
+            className={`${getLiquorColor(
+              mainLiquor
+            )} flex mx-auto justify-self-start`}
+          >
             {mainLiquor}
           </div>
         ) : (
           <div></div>
         )}
-
-        
-      </div>
+        <div className="flex flex-row justify-center">
+          <h2 className="text-2xl text-base-content font-bold underline italic">
+            {name}
+          </h2>
+        </div>
 
         <div className="flex flex-row items-center">
           {image ? (
@@ -121,22 +123,25 @@ const DisplayCard = ({ cocktail }) => {
 
           <div className="ml-2">
             <>
-              <div className="font-bold underline text-xs">Ingredients Used</div>
+              <div className="font-bold underline text-xs">
+                Ingredients Used
+              </div>
               <div className="lg:grid lg:grid-cols-2">
-              {ingredientsWithMeasures.map((ingredient, index) => {
-                if (ingredient.ingredient) {
-                  return (
-                    <div key={index} className="text-sm text-neutral-100 m-[2px] font-bold">
-                      {ingredient.ingredient} - {ingredient.measure}
-                    </div>
-                  );
-                }
-              })}
+                {ingredientsWithMeasures.map((ingredient, index) => {
+                  if (ingredient.ingredient) {
+                    return (
+                      <div
+                        key={index}
+                        className="text-sm text-neutral-100 m-[2px] font-bold"
+                      >
+                        {ingredient.ingredient} - {ingredient.measure}
+                      </div>
+                    );
+                  }
+                })}
               </div>
               <div className="text-sm">
-                <div className="underline italic mr-3">
-                  Instructions:
-                </div>
+                <div className="underline italic mr-3">Instructions:</div>
                 {instructions}
               </div>
             </>

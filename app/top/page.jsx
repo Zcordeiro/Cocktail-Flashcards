@@ -9,22 +9,21 @@ const TopPage = async () => {
 
   return (
     <div className="bg-base-300 bg-center opacity-90 w-full p-4 md:px-24 md:py-10 text-neutral-50 min-h-fit">
-      <h1 className="text-6xl font-bold py-6 text-center">
-        Top Cocktails 
-      </h1>
+      <h1 className="text-6xl font-bold py-6 text-center">Featured Cocktails</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-4">
         {cocktails &&
-          cocktails.map((cocktail) => (
-            <div
-              key={cocktail._id}
-              className="flex items-center justify-center lg:justify-start"
-            >
-              {/* <Flipcard cocktail={cocktail} /> */}
-              <DisplayCard cocktail={cocktail} />
-
-            </div>
-          ))}
+          cocktails
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((cocktail) => (
+              <div
+                key={cocktail._id}
+                className="flex items-center justify-center lg:justify-start"
+              >
+                <DisplayCard cocktail={cocktail} />
+              </div>
+            ))}
       </div>
     </div>
   );
